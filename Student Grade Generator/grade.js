@@ -37,3 +37,4 @@ function gradingSystem(){
     document.getElementById("results").innerHTML = grade;
     return grade;     
 }
+gradingSystem()
