@@ -31,10 +31,10 @@ function gradingSystem(){
         console.log(grade);
     }
     else if(mark > 100){
-        grade = "grade not found";
+        grade = "Grade not found, Invalid mark";
         console.log("Mark can only be between 0 to 100");
     }
-    document.getElementById("results").innerHTML = grade;
+    document.getElementById("results").innerHTML = `You grade: ${grade}`;
     return grade;     
 }
 gradingSystem()

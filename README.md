@@ -14,8 +14,9 @@ The coding challenge has three challenges which require implementing using Javas
 * Fork the repo 
 `git clone git@github.com:Ron-SE/phase1-week1-project.git` 
 * Open code in visual studio code `code .` 
-* Open the live server for each project and click on the buttons for project 1    and 3 to get the program running or open the developer tools and run the function in the console.
-* For program 2, open the developer tools for your browser and run the function there.
+* Open the html file of each project on the live server and click on the buttons to start the program.
+* Each challenge will prompt you to input the required information and generate an output which should be displayed below the button.
+* The challenges can also be run on their individual console tabs in the developer tools. 
 
 # Requirements 
 * Visual studio code

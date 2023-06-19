@@ -84,8 +84,12 @@ function calculatedSalary(){
     console.log("Total deductions:", deductable)
     console.log("Net Salary:", netSalary);
 
+    document.getElementById("gross").innerHTML = `Gross Salary: ${gross}`;
+    document.getElementById("paye").innerHTML = `PAYE: ${paye}`;
+    document.getElementById("nssf").innerHTML = `NSSF: ${nssf}`;
+    document.getElementById("nhif").innerHTML = `NHIF: ${nhif}`;
+    document.getElementById("deductions").innerHTML = `Total deductions: ${deductable}`;
     document.getElementById("salary").innerHTML = `Net salary: ${netSalary}`;
-    
+     
 }
 calculatedSalary()
-
