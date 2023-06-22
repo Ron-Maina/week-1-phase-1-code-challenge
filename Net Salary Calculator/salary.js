@@ -1,26 +1,41 @@
 //Begin by defining the variables
+let basic
+let benefits
 let gross
 let nssf
 let paye
-let netSalary
 let nhif
-let benefits
-let basicSalary
+let relief
+let netSalary
+
+
 
 function calculatedSalary(){
-    gross = prompt("Enter total basic Salary and benefits");
+    basic = prompt("Basic Salary");
+    document.getElementById("basic").innerHTML = `Basic Salary: ${basic}`;
+
+    benefits = prompt("Enter Benefits");
+    document.getElementById("benefits").innerHTML = `Benefits: ${benefits}`;
+
+    gross = parseInt(basic) + parseInt(benefits);
+    document.getElementById("gross").innerHTML = `Gross Salary: ${gross}`;
+
     nssf = gross * 0.06; //nssf calculation
+    let newGross = gross - nssf; 
+
     
-    //PAYE deductions
-    if (gross <= 24000){
-        paye = (gross * 0.1)
+   
+    //PAYE deductions  
+    if (newGross <= 24000){
+        paye = (newGross * 0.1)
     }
-    else if (gross >= 24001 && gross <= 32333){
-        paye = (gross * 0.25)
+    else if (newGross >= 24001 && newGross <= 32333){
+        paye = (newGross * 0.25)
     }
-    else if (gross >= 32333){
-        paye = (gross * 0.3)
+    else if (newGross >= 32333){
+        paye = (newGross * 0.3)
     }
+   
      
     //NHIF deduction
     if (gross <= 5999){
@@ -74,7 +89,9 @@ function calculatedSalary(){
     else if (gross >= 100000){
         nhif = 1700;
     }
-    let deductable = paye + nssf + nhif;
+    relief = 2400; //personal relief to be deducted from total deduction
+    let newPaye = paye - relief;
+    let deductable = newPaye + nssf + nhif;
     netSalary = gross - deductable; //finding the net salary 
         
     console.log("Gross salary:", gross)
@@ -84,7 +101,7 @@ function calculatedSalary(){
     console.log("Total deductions:", deductable)
     console.log("Net Salary:", netSalary);
 
-    document.getElementById("gross").innerHTML = `Gross Salary: ${gross}`;
+    
     document.getElementById("paye").innerHTML = `PAYE: ${paye}`;
     document.getElementById("nssf").innerHTML = `NSSF: ${nssf}`;
     document.getElementById("nhif").innerHTML = `NHIF: ${nhif}`;
@@ -92,4 +109,3 @@ function calculatedSalary(){
     document.getElementById("salary").innerHTML = `Net salary: ${netSalary}`;
      
 }
-calculatedSalary()

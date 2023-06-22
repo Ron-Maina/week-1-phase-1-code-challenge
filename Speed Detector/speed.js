@@ -28,4 +28,3 @@ function speedLimit(){
         document.getElementById("warning").innerHTML = `Warning: ${`Your ${warning}`}`;  
     }      
 } 
-speedLimit()

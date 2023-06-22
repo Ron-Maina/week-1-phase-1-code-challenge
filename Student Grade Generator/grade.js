@@ -37,4 +37,3 @@ function gradingSystem(){
     document.getElementById("results").innerHTML = `You grade: ${grade}`;
     return grade;     
 }
-gradingSystem()
