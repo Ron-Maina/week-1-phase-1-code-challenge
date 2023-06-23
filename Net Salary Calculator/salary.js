@@ -3,9 +3,8 @@ let basic
 let benefits
 let gross
 let nssf
-let paye
 let nhif
-let relief
+
 let netSalary
 
 
@@ -25,18 +24,35 @@ function calculatedSalary(){
 
     
    
-    //PAYE deductions  
-    if (newGross <= 24000){
-        paye = (newGross * 0.1)
+    //PAYE deductions 
+    let paye 
+    let paye0
+    let paye1;
+    let diff1;
+    let paye2;
+    let diff2;
+    let paye3;
+    let diff3;
+    
+    if (newGross <= 24000) {
+      paye0 = newGross * 0.1;
+      paye = paye0;
+    } else {
+      diff1 = newGross - 24000;
+      paye1 = 24000 * 0.1;
+    
+      if (diff1 < 32333 && diff1 <= 24000) {
+        paye2 = diff1 * 0.25;
+        paye = paye1 + paye2;
+      } else if (diff1 > 24000) {
+        diff2 = 32333 - 24000;
+        paye2 = diff2 * 0.25;
+        diff3 = diff1 - diff2;
+        paye3 = diff3 * 0.3;
+        paye = paye1 + paye2 + paye3
+      }
     }
-    else if (newGross >= 24001 && newGross <= 32333){
-        paye = (newGross * 0.25)
-    }
-    else if (newGross >= 32333){
-        paye = (newGross * 0.3)
-    }
-   
-     
+    
     //NHIF deduction
     if (gross <= 5999){
         nhif = 150;
@@ -89,20 +105,20 @@ function calculatedSalary(){
     else if (gross >= 100000){
         nhif = 1700;
     }
-    relief = 2400; //personal relief to be deducted from total deduction
+    let relief = 2400; //personal relief to be deducted from total deduction
     let newPaye = paye - relief;
     let deductable = newPaye + nssf + nhif;
     netSalary = gross - deductable; //finding the net salary 
         
     console.log("Gross salary:", gross)
-    console.log("PAYE deductions:", paye)
+    console.log("PAYE deductions:", newPaye)
     console.log("nssf deduction:", nssf)
     console.log("NHIF deduction:", nhif)
     console.log("Total deductions:", deductable)
     console.log("Net Salary:", netSalary);
 
     
-    document.getElementById("paye").innerHTML = `PAYE: ${paye}`;
+    document.getElementById("paye").innerHTML = `PAYE: ${newPaye}`;
     document.getElementById("nssf").innerHTML = `NSSF: ${nssf}`;
     document.getElementById("nhif").innerHTML = `NHIF: ${nhif}`;
     document.getElementById("deductions").innerHTML = `Total deductions: ${deductable}`;
